@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+
     tools:context=".MainActivity">
 
 
@@ -13,6 +15,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linear_holder"
         android:layout_alignParentTop="true"
+
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -21,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello! Please Capture the front text for the card"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="22sp" />
 
 
@@ -40,7 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:text="Capture" />
+            android:backgroundTint="#0000FF"
+            android:text="Capture"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/button_copy"
@@ -49,6 +54,8 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:text="Save front"
+            android:backgroundTint="#0000FF"
+            android:textColor="@color/white"
             android:visibility="gone" />
     </LinearLayout>
 
