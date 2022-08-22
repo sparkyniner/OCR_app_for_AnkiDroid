@@ -3,9 +3,11 @@ package com.example.ocrapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ShareCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -30,27 +32,27 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class Capture_back extends AppCompatActivity {
     Button button_capture, button_copy;
     TextView textview_data;
     Bitmap bitmap;
     private static final int REQUEST_CAMERA_CODE = 100;
-    public  static String front;
+    String back;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_capture_back);
 
-        button_capture = findViewById(R.id.button_capture);
-        button_copy = findViewById(R.id.button_copy);
-        textview_data = findViewById(R.id.text_data);
+        button_capture = findViewById(R.id.button_capture_1);
+        button_copy = findViewById(R.id.button_copy_1);
+        textview_data = findViewById(R.id.text_data_1);
 
 
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+        if (ContextCompat.checkSelfPermission(Capture_back.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(Capture_back.this, new String[]{
                     Manifest.permission.CAMERA
             }, REQUEST_CAMERA_CODE);
         }
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         button_capture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(MainActivity.this);
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(Capture_back.this);
 
             }
         });
@@ -66,10 +68,21 @@ public class MainActivity extends AppCompatActivity {
         button_copy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Activity context = Capture_back.this;
                 String scanned_text = textview_data.getText().toString();
-                front=scanned_text;
-                Intent intent = new Intent(MainActivity.this, Capture_back.class);
-                startActivity(intent);
+                back=scanned_text;
+                Intent shareIntent = ShareCompat.IntentBuilder.from(context)
+                        .setType("text/plain")
+                        .setText(back)
+                        .setSubject(MainActivity.front)
+                        .getIntent();
+                if (shareIntent.resolveActivity(context.getPackageManager()) != null) {
+                    context.startActivity(shareIntent);
+                }
+
+
+
+
             }
         });
 
@@ -96,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     private void getTextFromImage(Bitmap bitmap){
         TextRecognizer recognizer = new TextRecognizer.Builder(this).build();
         if (!recognizer.isOperational()){
-            Toast.makeText(MainActivity.this, "Error Occurred!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Capture_back.this, "Error Occurred!!!", Toast.LENGTH_SHORT).show();
         }
         else{
             Frame frame = new Frame.Builder().setBitmap(bitmap).build();

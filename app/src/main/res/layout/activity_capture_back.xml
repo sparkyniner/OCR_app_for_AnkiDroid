@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Capture_back">
 
 
     <ScrollView
@@ -17,10 +17,10 @@
         tools:layout_editor_absoluteY="8dp">
 
         <TextView
-            android:id="@+id/text_data"
+            android:id="@+id/text_data_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello! Please Capture the front text for the card"
+            android:text="@string/hello_please_capture_the_back_text_for_the_card"
             android:textColor="@color/black"
             android:textSize="22sp" />
 
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/button_capture"
+            android:id="@+id/button_capture_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -43,12 +43,12 @@
             android:text="Capture" />
 
         <Button
-            android:id="@+id/button_copy"
+            android:id="@+id/button_copy_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:text="Save front"
+            android:text="Save back"
             android:visibility="gone" />
     </LinearLayout>
 

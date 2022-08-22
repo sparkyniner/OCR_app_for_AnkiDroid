@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OCR App</string>
+    <string name="hello_please_capture_the_back_text_for_the_card">Hello! Please Capture the back text for the card</string>
 </resources>
