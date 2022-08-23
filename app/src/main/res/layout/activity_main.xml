@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:backgroundTint="#0000FF"
+            android:backgroundTint="#02B2FF"
             android:text="Capture"
             android:textColor="@color/white" />
 
@@ -54,7 +54,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:text="Save front"
-            android:backgroundTint="#0000FF"
+            android:backgroundTint="#02B2FF"
             android:textColor="@color/white"
             android:visibility="gone" />
     </LinearLayout>
